@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebd9364b-7e19-4edc-b799-9be17a58c655" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/geofertas/dao/UserDAO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/geofertas/dao/impl/UserDAOImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/geofertas/service/UserService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/geofertas/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/geofertas/ws/GeofertasService.java" afterPath="$PROJECT_DIR$/src/main/java/com/geofertas/ws/GeofertasService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/geofertas/ws/impl/GeofertasServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/geofertas/ws/impl/GeofertasServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/geofertas/entities/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/geofertas/entities/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/geofertas/entities/UserParameter.java" afterPath="$PROJECT_DIR$/src/main/java/com/geofertas/entities/UserParameter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/cxf-servlet.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/cxf-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geofetas-ws.iml" afterPath="$PROJECT_DIR$/geofetas-ws.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/geofetas_ws_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/geofetas_ws_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
     </list>
     <ignored path="geofetas-ws.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -83,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cxf-servlet.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cxf-servlet.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/cxf-servlet.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5729167">
-              <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -107,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+              <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -117,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/geofertas/entities/UserCompany.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="7" />
+              <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
               <folding>
                 <element signature="e#431#432#0" expanded="true" />
                 <element signature="e#459#460#0" expanded="true" />
@@ -146,6 +133,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6770833">
+              <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -169,7 +166,6 @@
       <list>
         <option value="$PROJECT_DIR$/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/geofertas/ws/Server.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/geofertas/entities/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/geofertas/dao/UserDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/geofertas/service/UserService.java" />
@@ -181,6 +177,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/geofertas/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/geofertas/dao/impl/UserDAOImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/cxf-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
       </list>
     </option>
   </component>
@@ -362,7 +359,7 @@
     <property name="FullScreen" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="JPA.DatabaseSchemaImportDialog" value="e95545e2-0443-406b-bbba-45352906b65a" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/webapp/WEB-INF/cxf-servlet.xml&#10;HibernateDaoS&#9;FILE&#9;jar:///Users/mac/.m2/repository/org/springframework/spring-orm/4.2.3.RELEASE/spring-orm-4.2.3.RELEASE-sources.jar!/org/springframework/orm/hibernate4/support/HibernateDaoSupport.java&#10;UserCompa&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/java/com/geofertas/entities/UserCompany.java&#10;user_com&#9;null&#9;null&#10;UserParame&#9;PSI&#9;JAVA://com.geofertas.entities.UserParameter&#10;pom.xml&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/pom.xml&#10;cx&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/webapp/WEB-INF/cxf-servlet.xml&#10;geo&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/java/com/geofertas/ws/GeofertasService.java&#10;GEOFERTASSE&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/java/com/geofertas/ws/impl/GeofertasServiceImpl.java&#10;UserServ&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/java/com/geofertas/service/UserService.java&#10;cxf&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/webapp/WEB-INF/cxf-servlet.xml&#10;web.xm&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/webapp/WEB-INF/web.xml&#10;pom.xm&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/pom.xml&#10;geofertas&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/java/com/geofertas/ws/GeofertasService.java&#10;Advert&#9;PSI&#9;JAVA://com.geofertas.entities.Advertisement" />
+    <property name="SearchEverywhereHistoryKey" value="web.xm&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/webapp/WEB-INF/web.xml&#10;HibernateDaoS&#9;FILE&#9;jar:///Users/mac/.m2/repository/org/springframework/spring-orm/4.2.3.RELEASE/spring-orm-4.2.3.RELEASE-sources.jar!/org/springframework/orm/hibernate4/support/HibernateDaoSupport.java&#10;UserCompa&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/java/com/geofertas/entities/UserCompany.java&#10;user_com&#9;null&#9;null&#10;UserParame&#9;PSI&#9;JAVA://com.geofertas.entities.UserParameter&#10;pom.xml&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/pom.xml&#10;cx&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/webapp/WEB-INF/cxf-servlet.xml&#10;geo&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/java/com/geofertas/ws/GeofertasService.java&#10;GEOFERTASSE&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/java/com/geofertas/ws/impl/GeofertasServiceImpl.java&#10;UserServ&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/java/com/geofertas/service/UserService.java&#10;cxf&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/webapp/WEB-INF/cxf-servlet.xml&#10;pom.xm&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/pom.xml&#10;geofertas&#9;FILE&#9;file:///Users/mac/git/geofetas-ws/src/main/java/com/geofertas/ws/GeofertasService.java&#10;Advert&#9;PSI&#9;JAVA://com.geofertas.entities.Advertisement" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
     <property name="recentsLimit" value="5" />
@@ -712,12 +709,12 @@
       <workItem from="1449065246339" duration="4000" />
       <workItem from="1449351681607" duration="2128000" />
       <workItem from="1449955852175" duration="13576000" />
-      <workItem from="1449994391709" duration="4939000" />
+      <workItem from="1449994391709" duration="5315000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24793000" />
+    <option name="totallyTimeSpent" value="25169000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="986" extended-state="0" />
@@ -1079,14 +1076,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-orm/4.2.3.RELEASE/spring-orm-4.2.3.RELEASE-sources.jar!/org/springframework/orm/hibernate3/annotation/AnnotationSessionFactoryBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1100,8 +1089,8 @@
         <state vertical-scroll-proportion="0.4375">
           <caret line="126" column="16" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
           <folding>
-            <element signature="e#4568#4569#0" expanded="true" />
-            <element signature="e#4611#4612#0" expanded="true" />
+            <element signature="e#4568#4569#0" expanded="false" />
+            <element signature="e#4611#4612#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1127,8 +1116,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="620" column="30" selection-start-line="620" selection-start-column="30" selection-end-line="620" selection-end-column="30" />
           <folding>
-            <element signature="e#19891#20108#0" expanded="true" />
-            <element signature="e#20107#20108#0" expanded="true" />
+            <element signature="e#19891#20108#0" expanded="false" />
+            <element signature="e#20107#20108#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1184,27 +1173,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="127" column="54" selection-start-line="127" selection-start-column="27" selection-end-line="127" selection-end-column="54" />
           <folding>
-            <element signature="e#5006#5007#0" expanded="true" />
-            <element signature="e#5067#5068#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/geofertas/entities/Administrator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/geofertas/entities/UserCompany.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="7" />
-          <folding>
-            <element signature="e#431#432#0" expanded="true" />
-            <element signature="e#459#460#0" expanded="true" />
+            <element signature="e#5006#5007#0" expanded="false" />
+            <element signature="e#5067#5068#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1221,10 +1191,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-orm/4.2.3.RELEASE/spring-orm-4.2.3.RELEASE-sources.jar!/org/springframework/orm/hibernate4/support/HibernateDaoSupport.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/geofertas/entities/UserCompany.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+          <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
+          <folding>
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#459#460#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/geofertas/entities/UserParameter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/geofertas/entities/Administrator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -1241,18 +1238,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-orm/4.2.3.RELEASE/spring-orm-4.2.3.RELEASE-sources.jar!/org/springframework/orm/hibernate4/support/HibernateDaoSupport.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/geofertas/entities/UserParameter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="10" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
+          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1260,15 +1249,23 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+          <caret line="9" column="59" selection-start-line="9" selection-start-column="59" selection-end-line="9" selection-end-column="59" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/cxf-servlet.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5729167">
-          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6770833">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
           <folding />
         </state>
       </provider>
