@@ -14,4 +14,7 @@ interface GeofertasService {
     @WebResult
     String sayHello(String name);
 
+
+
+
 }

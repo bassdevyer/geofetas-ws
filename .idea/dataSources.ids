@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="PostgreSQL - geofertas@localhost" uuid="e95545e2-0443-406b-bbba-45352906b65a">
+    <database-info product="PostgreSQL" version="9.4.5" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact"/>
+    <schema name="public" catalog="geofertas"/>
+    <table name="ADMINISTRATOR" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="username" sqlType="varchar" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="varchar" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="ADMINISTRATOR_pkey" columns="id"/>
+    </table>
+    <table name="ADVERTISEMENT" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="title" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="start_date" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="end_date" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="image" sqlType="bytea" precision="2147483647" scale="0" nullable="true" jdbcType="-2"/>
+      <column name="active" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <column name="company_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="ADVERTISEMENT_pkey" columns="id"/>
+      <foreign-key name="fk_advertisement_company" columns="company_id" ref-table="COMPANY" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_advertisement_tag-advertisement" table="ADVERTISEMENT_TAG" schema="public" catalog="geofertas" columns="advertisement_id"/>
+      <exported-key name="fk_user_advertisement_advertisement" table="USER_ADVERTISEMENT" schema="public" catalog="geofertas" columns="advertisement_id"/>
+    </table>
+    <table name="ADVERTISEMENT_TAG" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="advertisement_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="tag_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="ADVERTISEMENT_TAG_pkey" columns="id"/>
+      <foreign-key name="fk_advertisement_tag-advertisement" columns="advertisement_id" ref-table="ADVERTISEMENT" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_advertisement_tag-tag" columns="tag_id" ref-table="TAG" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="BRANCH_OFFICE" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="company_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="address" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="telephone" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="latitude" sqlType="float8" precision="17" scale="17" nullable="false" jdbcType="8"/>
+      <column name="longitude" sqlType="float8" precision="17" scale="17" nullable="false" jdbcType="8"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="BRANCH_OFFICE_pkey" columns="id"/>
+      <foreign-key name="fk_brach_office-company" columns="company_id" ref-table="COMPANY" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="CATALOGUE" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="name" sqlType="varchar" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="CATALOGUE_pkey" columns="id"/>
+      <exported-key name="fk_catalogue_detail-catalogue" table="CATALOGUE_DETAIL" schema="public" catalog="geofertas" columns="catalogue_id"/>
+    </table>
+    <table name="CATALOGUE_DETAIL" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="catalogue_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="value" sqlType="varchar" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
+      <column name="active" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="CATALOGUE_DETAIL_pkey" columns="id"/>
+      <foreign-key name="fk_catalogue_detail-catalogue" columns="catalogue_id" ref-table="CATALOGUE" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="COMPANY" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="name" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="description" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="logo" sqlType="bytea" precision="2147483647" scale="0" nullable="true" jdbcType="-2"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="COMPANY_pkey" columns="id"/>
+      <exported-key name="fk_advertisement_company" table="ADVERTISEMENT" schema="public" catalog="geofertas" columns="company_id"/>
+      <exported-key name="fk_brach_office-company" table="BRANCH_OFFICE" schema="public" catalog="geofertas" columns="company_id"/>
+      <exported-key name="fk_user_company-company" table="USER_COMPANY" schema="public" catalog="geofertas" columns="company_id"/>
+    </table>
+    <table name="PARAMETER" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="name" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="value" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="PARAMETER_pkey" columns="id"/>
+      <exported-key name="fk_user_parameter-parameter" table="USER_PARAMETER" schema="public" catalog="geofertas" columns="parameter_id"/>
+    </table>
+    <table name="TAG" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="name" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="TAG_pkey" columns="id"/>
+      <exported-key name="fk_advertisement_tag-tag" table="ADVERTISEMENT_TAG" schema="public" catalog="geofertas" columns="tag_id"/>
+      <exported-key name="fk_user_tag-tag" table="USER_TAG" schema="public" catalog="geofertas" columns="tag_id"/>
+    </table>
+    <table name="USER" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="username" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="first_name" sqlType="varchar" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="varchar" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="authentication_type" sqlType="bpchar" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="USER_pkey" columns="id"/>
+      <exported-key name="fk_user_advertisement-user" table="USER_ADVERTISEMENT" schema="public" catalog="geofertas" columns="user_id"/>
+      <exported-key name="fk_user_company-user" table="USER_COMPANY" schema="public" catalog="geofertas" columns="user_id"/>
+      <exported-key name="fk_user_parameter-user" table="USER_PARAMETER" schema="public" catalog="geofertas" columns="user_id"/>
+      <exported-key name="fk_user_tag-user" table="USER_TAG" schema="public" catalog="geofertas" columns="user_id"/>
+    </table>
+    <table name="USER_ADVERTISEMENT" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="advertisement_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="USER_ADVERTISEMENT_pkey" columns="id"/>
+      <foreign-key name="fk_user_advertisement_advertisement" columns="advertisement_id" ref-table="ADVERTISEMENT" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_advertisement-user" columns="user_id" ref-table="USER" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="USER_COMPANY" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="company_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="USER_COMPANY_pkey" columns="id"/>
+      <foreign-key name="fk_user_company-company" columns="company_id" ref-table="COMPANY" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_company-user" columns="user_id" ref-table="USER" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="USER_PARAMETER" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="parameter_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <foreign-key name="fk_user_parameter-parameter" columns="parameter_id" ref-table="PARAMETER" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_parameter-user" columns="user_id" ref-table="USER" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="USER_TAG" schema="public" catalog="geofertas" type="TABLE">
+      <column name="id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="user_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="tag_id" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="enabled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+      <primary-key name="USER_TAG_pkey" columns="id"/>
+      <foreign-key name="fk_user_tag-tag" columns="tag_id" ref-table="TAG" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_user_tag-user" columns="user_id" ref-table="USER" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+  </data-source>
+</component>
