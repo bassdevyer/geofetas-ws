@@ -2,7 +2,9 @@ package com.geofertas.ws.impl;
 
 import com.geofertas.entities.Advertisement;
 import com.geofertas.entities.User;
+import com.geofertas.service.UserService;
 import com.geofertas.ws.GeofertasService;
+import org.springframework.dao.DataAccessException;
 
 import javax.jws.WebService;
 import java.util.List;
@@ -14,8 +16,11 @@ import java.util.List;
 public class GeofertasServiceImpl implements GeofertasService {
 
 
-    public String sayHello(String name) {
-        return null;
+    private UserService userService;
+
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
     }
 
     public User authenticate(String username, String hashPassword) {
@@ -38,8 +43,20 @@ public class GeofertasServiceImpl implements GeofertasService {
         return null;
     }
 
-    public User registerUser(User user) {
-        return null;
+    public User registerUser(String username, String lastname, String firstname, String email, String password, String authenticationType) {
+        User user = new User();
+        user.setUsername(username);
+        user.setLastName(lastname);
+        user.setFirstName(firstname);
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setAuthenticationType(authenticationType);
+        try {
+            userService.registerUser(user);
+            return user;
+        }catch(DataAccessException ex){
+            return null;
+        }
     }
 
     public Boolean resetPasword(Integer userID) {

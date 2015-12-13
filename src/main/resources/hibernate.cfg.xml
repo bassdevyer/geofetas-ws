@@ -6,6 +6,7 @@
   <session-factory>
     <property name="connection.url">jdbc:postgresql://localhost:5432/geofertas</property>
     <property name="connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
       <mapping class="com.geofertas.entities.Administrator"/>
       <mapping class="com.geofertas.entities.Advertisement"/>
       <mapping class="com.geofertas.entities.AdvertisementTag"/>

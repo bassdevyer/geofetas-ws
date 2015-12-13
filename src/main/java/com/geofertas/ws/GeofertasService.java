@@ -14,16 +14,12 @@ import java.util.List;
 @WebService
 public interface GeofertasService {
 
-    // Customizes the mapping of the return value to a WSDL part and XML element.s
-    @WebResult
-    String sayHello(String name);
-
     User authenticate(String username, String hashPassword);
     List<Advertisement> getAdvertisements(Double lat, Double lon);
     Boolean saveAdvertisement(Integer advertisementID, Integer userId);
     List<Advertisement> getSavedAdvertisements(Integer userID);
     User updateUser(User user);
-    User registerUser(User user);
+    User registerUser(String username, String lastname, String firstname, String email, String password, String authenticationType);
     Boolean resetPasword(Integer userID);
 
 

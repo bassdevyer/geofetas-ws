@@ -1,9 +1,6 @@
 package com.geofertas.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by whoami on 12/12/15.
@@ -16,7 +13,7 @@ public class UserParameter {
     private long parameterId;
     private boolean enabled;
 
-    @Basic
+    @Id
     @Column(name = "id")
     public long getId() {
         return id;
