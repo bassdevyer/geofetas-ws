@@ -12,18 +12,34 @@
     <cxf.version>3.1.4</cxf.version>
     <spring.version>4.2.3.RELEASE</spring.version>
   </properties>
-
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-web</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-beans</artifactId>
+    <version>${spring.version}</version>
+  </dependency>
 
     <dependency>
       <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-frontend-jaxws</artifactId>
+      <artifactId>cxf-rt-frontend-jaxrs</artifactId>
       <version>${cxf.version}</version>
     </dependency>
 
@@ -40,15 +56,13 @@
     </dependency>
 
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-      <version>${spring.version}</version>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-rs-extension-providers</artifactId>
+      <version>${cxf.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
+
+
+
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-webapp</artifactId>
@@ -72,7 +86,19 @@
       <version>9.1-901-1.jdbc4</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+      <version>${cxf.version}</version>
+    </dependency>
 
+
+  <!-- Jackson The JSON Producer dependency -->
+  <dependency>
+    <groupId>org.codehaus.jackson</groupId>
+    <artifactId>jackson-jaxrs</artifactId>
+    <version>1.9.13</version>
+  </dependency>
 
 
 

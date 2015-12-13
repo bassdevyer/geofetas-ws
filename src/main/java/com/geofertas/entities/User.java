@@ -4,11 +4,13 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
  * Created by whoami on 12/12/15.
  */
+@XmlRootElement(name="user")
 @Entity
 public class User implements Serializable {
 

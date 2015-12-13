@@ -4,6 +4,7 @@ import com.geofertas.entities.Advertisement;
 import com.geofertas.entities.User;
 import com.geofertas.service.UserService;
 import com.geofertas.ws.GeofertasService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
 import javax.jws.WebService;
@@ -12,12 +13,13 @@ import java.util.List;
 /**
  * Created by whoami on 12/12/15.
  */
-@WebService(endpointInterface = "com.geofertas.ws.GeofertasService")
 public class GeofertasServiceImpl implements GeofertasService {
-
 
     private UserService userService;
 
+    public String test(){
+        return "testing ws";
+    }
 
     public void setUserService(UserService userService) {
         this.userService = userService;
