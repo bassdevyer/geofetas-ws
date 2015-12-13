@@ -12,7 +12,7 @@ import java.util.List;
  * Defines the web service interface
  */
 @WebService
-interface GeofertasService {
+public interface GeofertasService {
 
     // Customizes the mapping of the return value to a WSDL part and XML element.s
     @WebResult
