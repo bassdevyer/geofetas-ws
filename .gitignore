@@ -1,3 +1,10 @@
 /target/
-
 .idea/
+
+.idea/workspace.xml
+
+.idea/libraries/Maven__org_apache_cxf_cxf_rt_databinding_aegis_3_1_4.xml
+
+.idea/libraries/Hibernate_4_2_2_4_2_2.xml
+
+.idea/artifacts/geofetas_ws_war_exploded.xml
