@@ -2,6 +2,9 @@ package com.geofertas.ws;
 
 import com.geofertas.entities.Advertisement;
 import com.geofertas.entities.User;
+import org.apache.cxf.jaxrs.model.wadl.Description;
+import org.apache.cxf.jaxrs.model.wadl.Descriptions;
+import org.apache.cxf.jaxrs.model.wadl.DocTarget;
 
 import javax.jws.WebMethod;
 import javax.jws.WebResult;

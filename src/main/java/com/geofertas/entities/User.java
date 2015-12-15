@@ -1,9 +1,6 @@
 package com.geofertas.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
@@ -24,6 +21,7 @@ public class User implements Serializable {
     private boolean enabled;
 
     @Id
+    @SequenceGenerator(name = "seqUser", sequenceName = "seq_user")
     @Column(name = "id")
     public long getId() {
         return id;

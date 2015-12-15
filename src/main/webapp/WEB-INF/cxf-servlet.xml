@@ -1,9 +1,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
        http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
 
@@ -21,19 +23,40 @@
 
     </jaxrs:server>
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="configLocation" >
-            <value>
-                classpath:hibernate.cfg.xml
-            </value>
-        </property>
+
+    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
-        <property name="sessionFactory">
-            <ref bean="sessionFactory" />
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="annotatedClasses">
+            <list>
+                <value>com.geofertas.entities.Administrator</value>
+                <value>com.geofertas.entities.Advertisement</value>
+                <value>com.geofertas.entities.AdvertisementTag</value>
+                <value>com.geofertas.entities.BranchOffice</value>
+                <value>com.geofertas.entities.Catalogue</value>
+                <value>com.geofertas.entities.CatalogueDetail</value>
+                <value>com.geofertas.entities.Company</value>
+                <value>com.geofertas.entities.Parameter</value>
+                <value>com.geofertas.entities.Tag</value>
+                <value>com.geofertas.entities.User</value>
+                <value>com.geofertas.entities.UserAdvertisement</value>
+                <value>com.geofertas.entities.UserCompany</value>
+                <value>com.geofertas.entities.UserParameter</value>
+                <value>com.geofertas.entities.UserTag</value>
+            </list>
         </property>
     </bean>
 
+    <bean id="dataSource"
+    class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="org.postgresql.Driver" />
+    <property name="url" value="jdbc:postgresql://localhost:5432/geofertas" />
+    <property name="username" value="postgres" />
+    <property name="password" value="postgres" />
+</bean>
     <!-- Web Service Bean Definition -->
 
     <bean id="geofertasService" class="com.geofertas.ws.impl.GeofertasServiceImpl">
@@ -50,5 +73,10 @@
     <!-- Service Beans Definition -->
 
     <bean id="userService" class="com.geofertas.service.impl.UserServiceImpl">
+        <property name="userDAO" ref="userDAO"/>
     </bean>
+
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+
 </beans>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
 import javax.jws.WebService;
+import javax.ws.rs.PathParam;
 import java.util.List;
 
 /**
@@ -57,6 +58,7 @@ public class GeofertasServiceImpl implements GeofertasService {
             userService.registerUser(user);
             return user;
         }catch(DataAccessException ex){
+            ex.printStackTrace();
             return null;
         }
     }
