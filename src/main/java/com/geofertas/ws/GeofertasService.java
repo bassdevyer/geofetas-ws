@@ -6,9 +6,7 @@ import com.geofertas.entities.User;
 import javax.jws.WebMethod;
 import javax.jws.WebResult;
 import javax.jws.WebService;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -17,6 +15,8 @@ import java.util.List;
  * Defines the web service interface
  */
 @Path("/")
+@Produces("application/json")
+@Consumes("application/json")
 @WebService(name = "geofertasService")
 public interface GeofertasService {
 
@@ -30,6 +30,8 @@ public interface GeofertasService {
     Boolean saveAdvertisement(Integer advertisementID, Integer userId);
     List<Advertisement> getSavedAdvertisements(Integer userID);
     User updateUser(User user);
+    @POST
+    @Path("/registerUser")
     User registerUser(String username, String lastname, String firstname, String email, String password, String authenticationType);
     Boolean resetPasword(Integer userID);
 
