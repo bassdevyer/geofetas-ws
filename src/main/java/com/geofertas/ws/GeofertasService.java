@@ -25,10 +25,12 @@ public interface GeofertasService {
 
 
     @GET
-    @Produces({MediaType.APPLICATION_JSON})
     @Path("/test")
     String test();
     User authenticate(String username, String hashPassword);
+
+    @GET
+    @Path("/getAdvertisements")
     List<Advertisement> getAdvertisements(Double lat, Double lon);
     Boolean saveAdvertisement(Integer advertisementID, Integer userId);
     List<Advertisement> getSavedAdvertisements(Integer userID);
