@@ -51,24 +51,12 @@
 
     <dependency>
       <groupId>org.apache.cxf</groupId>
-      <artifactId>cxf-rt-transports-http-jetty</artifactId>
-      <version>${cxf.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.cxf</groupId>
       <artifactId>cxf-rt-rs-extension-providers</artifactId>
       <version>${cxf.version}</version>
     </dependency>
 
 
-
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-webapp</artifactId>
-      <version>9.3.6.v20151106</version>
-    </dependency>
-    <dependency>
+   <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
       <version>4.2.2.Final</version>
@@ -106,6 +94,30 @@
       <version>${cxf.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-ws-policy</artifactId>
+      <version>${cxf.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-wsdl</artifactId>
+      <version>${cxf.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.5</version>
+    </dependency>
+
+
 
   </dependencies>
   <build>
@@ -116,11 +128,6 @@
         <configuration>
           <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-maven-plugin</artifactId>
-        <version>9.3.6.v20151106</version>
       </plugin>
   </plugins>
     <finalName>geofertas-ws</finalName>
