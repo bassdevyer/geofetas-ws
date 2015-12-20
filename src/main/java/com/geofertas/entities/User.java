@@ -1,15 +1,21 @@
 package com.geofertas.entities;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  * Created by whoami on 12/12/15.
  */
-@XmlRootElement(name="user")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(
+        name = "user",
+        namespace="http://org.jboss.ws/samples/retail/profile",
+        propOrder = { "id", "username", "lastName", "firstName", "email", "password", "authenticationType", "enabled" }
+)
 @Entity
-public class User implements Serializable {
+public class User {
 
     private long id;
     private String username;

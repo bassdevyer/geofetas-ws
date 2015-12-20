@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Created by whoami on 12/12/15.
  */
+@WebService(endpointInterface = "com.geofertas.ws.GeofertasService")
 public class GeofertasServiceImpl implements GeofertasService {
 
     private UserService userService;

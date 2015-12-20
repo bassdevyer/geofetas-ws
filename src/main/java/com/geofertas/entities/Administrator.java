@@ -4,10 +4,13 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by whoami on 12/12/15.
  */
+@XmlRootElement(name = "administrator")
 @Entity
 public class Administrator {
     private int id;
@@ -25,6 +28,7 @@ public class Administrator {
         this.id = id;
     }
 
+    @XmlElement
     @Basic
     @Column(name = "username")
     public String getUsername() {
@@ -35,6 +39,7 @@ public class Administrator {
         this.username = username;
     }
 
+    @XmlElement
     @Basic
     @Column(name = "password")
     public String getPassword() {
@@ -45,6 +50,7 @@ public class Administrator {
         this.password = password;
     }
 
+    @XmlElement
     @Basic
     @Column(name = "enabled")
     public boolean isEnabled() {

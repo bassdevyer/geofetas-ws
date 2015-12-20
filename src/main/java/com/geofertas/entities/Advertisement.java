@@ -4,11 +4,14 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Arrays;
 
 /**
  * Created by whoami on 12/12/15.
  */
+@XmlRootElement(name = "advertisement")
 @Entity
 public class Advertisement {
     private long id;
@@ -20,6 +23,7 @@ public class Advertisement {
     private boolean active;
     private long companyId;
 
+    @XmlElement
     @Id
     @Column(name = "id")
     public long getId() {
@@ -40,6 +44,7 @@ public class Advertisement {
         this.title = title;
     }
 
+    @XmlElement
     @Basic
     @Column(name = "description")
     public String getDescription() {
@@ -50,6 +55,7 @@ public class Advertisement {
         this.description = description;
     }
 
+    @XmlElement
     @Basic
     @Column(name = "start_date")
     public String getStartDate() {
@@ -60,6 +66,7 @@ public class Advertisement {
         this.startDate = startDate;
     }
 
+    @XmlElement
     @Basic
     @Column(name = "end_date")
     public String getEndDate() {
@@ -70,6 +77,7 @@ public class Advertisement {
         this.endDate = endDate;
     }
 
+    @XmlElement
     @Basic
     @Column(name = "image")
     public byte[] getImage() {
@@ -80,6 +88,7 @@ public class Advertisement {
         this.image = image;
     }
 
+    @XmlElement
     @Basic
     @Column(name = "active")
     public boolean isActive() {
@@ -90,6 +99,7 @@ public class Advertisement {
         this.active = active;
     }
 
+    @XmlElement
     @Basic
     @Column(name = "company_id")
     public long getCompanyId() {
