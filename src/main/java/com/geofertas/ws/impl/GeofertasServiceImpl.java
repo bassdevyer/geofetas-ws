@@ -1,15 +1,13 @@
 package com.geofertas.ws.impl;
 
-import com.geofertas.entities.Advertisement;
-import com.geofertas.entities.User;
+import com.geofertas.entity.Advertisement;
+import com.geofertas.entity.User;
 import com.geofertas.service.AdvertisementService;
 import com.geofertas.service.UserService;
 import com.geofertas.ws.GeofertasService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
 import javax.jws.WebService;
-import javax.ws.rs.PathParam;
 import java.util.List;
 
 /**

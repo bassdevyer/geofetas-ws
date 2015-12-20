@@ -1,7 +1,7 @@
 package com.geofertas.ws;
 
-import com.geofertas.entities.Advertisement;
-import com.geofertas.entities.User;
+import com.geofertas.entity.Advertisement;
+import com.geofertas.entity.User;
 
 import javax.jws.WebService;
 import javax.ws.rs.*;

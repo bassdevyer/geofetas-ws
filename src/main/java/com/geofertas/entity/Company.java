@@ -1,4 +1,4 @@
-package com.geofertas.entities;
+package com.geofertas.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -6,22 +6,23 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by whoami on 12/12/15.
+ * Created by whoami on 12/20/15.
  */
 @Entity
-public class Catalogue {
-    private long id;
+public class Company {
+    private Long id;
     private String name;
     private String description;
-    private boolean enabled;
+    private String logo;
+    private String enabled;
 
     @Id
     @Column(name = "id")
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -46,12 +47,22 @@ public class Catalogue {
     }
 
     @Basic
+    @Column(name = "logo")
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    @Basic
     @Column(name = "enabled")
-    public boolean isEnabled() {
+    public String getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(String enabled) {
         this.enabled = enabled;
     }
 
@@ -60,23 +71,24 @@ public class Catalogue {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Catalogue catalogue = (Catalogue) o;
+        Company company = (Company) o;
 
-        if (id != catalogue.id) return false;
-        if (enabled != catalogue.enabled) return false;
-        if (name != null ? !name.equals(catalogue.name) : catalogue.name != null) return false;
-        if (description != null ? !description.equals(catalogue.description) : catalogue.description != null)
-            return false;
+        if (id != null ? !id.equals(company.id) : company.id != null) return false;
+        if (name != null ? !name.equals(company.name) : company.name != null) return false;
+        if (description != null ? !description.equals(company.description) : company.description != null) return false;
+        if (logo != null ? !logo.equals(company.logo) : company.logo != null) return false;
+        if (enabled != null ? !enabled.equals(company.enabled) : company.enabled != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (enabled ? 1 : 0);
+        result = 31 * result + (logo != null ? logo.hashCode() : 0);
+        result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
     }
 }

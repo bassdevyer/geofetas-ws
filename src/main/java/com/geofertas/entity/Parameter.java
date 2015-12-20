@@ -1,4 +1,4 @@
-package com.geofertas.entities;
+package com.geofertas.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -6,33 +6,33 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by whoami on 12/12/15.
+ * Created by whoami on 12/20/15.
  */
 @Entity
 public class Parameter {
-    private long id;
-    private long userId;
+    private Long id;
+    private Long userId;
     private String name;
     private String value;
-    private boolean enabled;
+    private String enabled;
 
     @Id
     @Column(name = "id")
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     @Basic
     @Column(name = "user_id")
-    public long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -58,11 +58,11 @@ public class Parameter {
 
     @Basic
     @Column(name = "enabled")
-    public boolean isEnabled() {
+    public String getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(String enabled) {
         this.enabled = enabled;
     }
 
@@ -73,22 +73,22 @@ public class Parameter {
 
         Parameter parameter = (Parameter) o;
 
-        if (id != parameter.id) return false;
-        if (userId != parameter.userId) return false;
-        if (enabled != parameter.enabled) return false;
+        if (id != null ? !id.equals(parameter.id) : parameter.id != null) return false;
+        if (userId != null ? !userId.equals(parameter.userId) : parameter.userId != null) return false;
         if (name != null ? !name.equals(parameter.name) : parameter.name != null) return false;
         if (value != null ? !value.equals(parameter.value) : parameter.value != null) return false;
+        if (enabled != null ? !enabled.equals(parameter.enabled) : parameter.enabled != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (userId ^ (userId >>> 32));
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (value != null ? value.hashCode() : 0);
-        result = 31 * result + (enabled ? 1 : 0);
+        result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
     }
 }

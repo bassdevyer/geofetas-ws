@@ -1,6 +1,7 @@
 package com.geofertas.dao;
 
-import com.geofertas.entities.Advertisement;
+import com.geofertas.entity.Advertisement;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -9,5 +10,6 @@ import java.util.List;
  */
 public interface AdvertisementDAO {
 
+    @Transactional
     List<Advertisement> getAdvertisements(Double lat, Double lon);
 }

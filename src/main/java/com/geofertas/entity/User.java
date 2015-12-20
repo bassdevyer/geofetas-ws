@@ -1,39 +1,31 @@
-package com.geofertas.entities;
+package com.geofertas.entity;
 
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
- * Created by whoami on 12/12/15.
+ * Created by whoami on 12/20/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(
-        name = "user",
-        namespace="http://org.jboss.ws/samples/retail/profile",
-        propOrder = { "id", "username", "lastName", "firstName", "email", "password", "authenticationType", "enabled" }
-)
 @Entity
 public class User {
-
-    private long id;
+    private Long id;
     private String username;
     private String lastName;
     private String firstName;
     private String email;
     private String password;
     private String authenticationType;
-    private boolean enabled;
+    private String enabled;
 
     @Id
-    @SequenceGenerator(name = "seqUser", sequenceName = "seq_user")
     @Column(name = "id")
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -99,11 +91,11 @@ public class User {
 
     @Basic
     @Column(name = "enabled")
-    public boolean isEnabled() {
+    public String getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(String enabled) {
         this.enabled = enabled;
     }
 
@@ -114,8 +106,7 @@ public class User {
 
         User user = (User) o;
 
-        if (id != user.id) return false;
-        if (enabled != user.enabled) return false;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
         if (username != null ? !username.equals(user.username) : user.username != null) return false;
         if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
@@ -123,20 +114,21 @@ public class User {
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (authenticationType != null ? !authenticationType.equals(user.authenticationType) : user.authenticationType != null)
             return false;
+        if (enabled != null ? !enabled.equals(user.enabled) : user.enabled != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (authenticationType != null ? authenticationType.hashCode() : 0);
-        result = 31 * result + (enabled ? 1 : 0);
+        result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
     }
 }

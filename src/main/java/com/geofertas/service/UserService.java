@@ -1,6 +1,6 @@
 package com.geofertas.service;
 
-import com.geofertas.entities.User;
+import com.geofertas.entity.User;
 import org.springframework.dao.DataAccessException;
 
 /**

@@ -1,7 +1,7 @@
 package com.geofertas.service.impl;
 
 import com.geofertas.dao.AdvertisementDAO;
-import com.geofertas.entities.Advertisement;
+import com.geofertas.entity.Advertisement;
 import com.geofertas.service.AdvertisementService;
 
 import java.util.List;

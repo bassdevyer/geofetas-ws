@@ -1,8 +1,7 @@
 package com.geofertas.dao;
 
-import com.geofertas.entities.User;
+import com.geofertas.entity.User;
 import org.springframework.dao.DataAccessException;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

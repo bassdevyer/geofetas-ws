@@ -30,30 +30,30 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="annotatedClasses">
-            <list>
-                <value>com.geofertas.entities.Administrator</value>
-                <value>com.geofertas.entities.Advertisement</value>
-                <value>com.geofertas.entities.AdvertisementTag</value>
-                <value>com.geofertas.entities.BranchOffice</value>
-                <value>com.geofertas.entities.Catalogue</value>
-                <value>com.geofertas.entities.CatalogueDetail</value>
-                <value>com.geofertas.entities.Company</value>
-                <value>com.geofertas.entities.Parameter</value>
-                <value>com.geofertas.entities.Tag</value>
-                <value>com.geofertas.entities.User</value>
-                <value>com.geofertas.entities.UserAdvertisement</value>
-                <value>com.geofertas.entities.UserCompany</value>
-                <value>com.geofertas.entities.UserParameter</value>
-                <value>com.geofertas.entities.UserTag</value>
-                <value>com.geofertas.entities.AdvertisementBranch</value>
-            </list>
-        </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.connection.url">jdbc:postgresql://localhost:5432/geofertas</prop>
                 <prop key="hibernate.connection.driver_class">org.postgresql.Driver</prop>
             </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.geofertas.entity.Administrator</value>
+                <value>com.geofertas.entity.Advertisement</value>
+                <value>com.geofertas.entity.AdvertisementBranch</value>
+                <value>com.geofertas.entity.AdvertisementTag</value>
+                <value>com.geofertas.entity.BranchOffice</value>
+                <value>com.geofertas.entity.Catalogue</value>
+                <value>com.geofertas.entity.CatalogueDetail</value>
+                <value>com.geofertas.entity.Company</value>
+                <value>com.geofertas.entity.Parameter</value>
+                <value>com.geofertas.entity.Tag</value>
+                <value>com.geofertas.entity.User</value>
+                <value>com.geofertas.entity.UserAdvertisement</value>
+                <value>com.geofertas.entity.UserCompany</value>
+                <value>com.geofertas.entity.UserParameter</value>
+                <value>com.geofertas.entity.UserTag</value>
+            </list>
         </property>
     </bean>
 

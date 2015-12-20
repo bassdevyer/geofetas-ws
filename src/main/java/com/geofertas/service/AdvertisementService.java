@@ -1,6 +1,6 @@
 package com.geofertas.service;
 
-import com.geofertas.entities.Advertisement;
+import com.geofertas.entity.Advertisement;
 
 import java.util.List;
 
