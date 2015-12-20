@@ -4,9 +4,7 @@ import com.geofertas.entities.Advertisement;
 import com.geofertas.entities.User;
 
 import javax.jws.WebService;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import java.util.List;
 
 /**
@@ -24,7 +22,10 @@ public interface GeofertasService {
 
     User authenticate(String username, String hashPassword);
 
-    List<Advertisement> getAdvertisements(Double lat, Double lon);
+    @GET
+    @Path("/getAdvertisements/{lat}-{lon}")
+    @Produces("application/json")
+    List<Advertisement> getAdvertisements(@PathParam("lat") Double lat, @PathParam("lon") Double lon);
     Boolean saveAdvertisement(Integer advertisementID, Integer userId);
 
     List<Advertisement> getSavedAdvertisements(Integer userID);

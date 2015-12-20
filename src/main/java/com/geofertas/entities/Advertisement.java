@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.sql.Date;
 import java.util.Arrays;
 
 /**
@@ -17,9 +18,9 @@ public class Advertisement {
     private long id;
     private String title;
     private String description;
-    private String startDate;
-    private String endDate;
-    private byte[] image;
+    private Date startDate;
+    private Date endDate;
+    private String image;
     private boolean active;
     private long companyId;
 
@@ -58,33 +59,33 @@ public class Advertisement {
     @XmlElement
     @Basic
     @Column(name = "start_date")
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
     @XmlElement
     @Basic
     @Column(name = "end_date")
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
     @XmlElement
     @Basic
     @Column(name = "image")
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -110,35 +111,4 @@ public class Advertisement {
         this.companyId = companyId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Advertisement that = (Advertisement) o;
-
-        if (id != that.id) return false;
-        if (active != that.active) return false;
-        if (companyId != that.companyId) return false;
-        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (startDate != null ? !startDate.equals(that.startDate) : that.startDate != null) return false;
-        if (endDate != null ? !endDate.equals(that.endDate) : that.endDate != null) return false;
-        if (!Arrays.equals(image, that.image)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
-        result = 31 * result + (endDate != null ? endDate.hashCode() : 0);
-        result = 31 * result + (image != null ? Arrays.hashCode(image) : 0);
-        result = 31 * result + (active ? 1 : 0);
-        result = 31 * result + (int) (companyId ^ (companyId >>> 32));
-        return result;
-    }
 }

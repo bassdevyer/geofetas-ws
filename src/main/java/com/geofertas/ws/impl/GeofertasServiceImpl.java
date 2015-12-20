@@ -2,6 +2,7 @@ package com.geofertas.ws.impl;
 
 import com.geofertas.entities.Advertisement;
 import com.geofertas.entities.User;
+import com.geofertas.service.AdvertisementService;
 import com.geofertas.service.UserService;
 import com.geofertas.ws.GeofertasService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import java.util.List;
 public class GeofertasServiceImpl implements GeofertasService {
 
     private UserService userService;
+    private AdvertisementService advertisementService;
 
     public String test(){
         return "testing ws";
@@ -27,12 +29,16 @@ public class GeofertasServiceImpl implements GeofertasService {
         this.userService = userService;
     }
 
+    public void setAdvertisementService(AdvertisementService advertisementService) {
+        this.advertisementService = advertisementService;
+    }
+
     public User authenticate(String username, String hashPassword) {
         return null;
     }
 
     public List<Advertisement> getAdvertisements(Double lat, Double lon) {
-        return null;
+        return advertisementService.getAdvertisements(lat, lon);
     }
 
     public Boolean saveAdvertisement(Integer advertisementID, Integer userId) {
