@@ -5,9 +5,11 @@ import com.geofertas.entity.User;
 import com.geofertas.service.AdvertisementService;
 import com.geofertas.service.UserService;
 import com.geofertas.ws.GeofertasService;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.dao.DataAccessException;
 
 import javax.jws.WebService;
+import javax.ws.rs.Produces;
 import java.util.List;
 
 /**
@@ -18,6 +20,7 @@ public class GeofertasServiceImpl implements GeofertasService {
 
     private UserService userService;
     private AdvertisementService advertisementService;
+
 
     public String test(){
         return "testing ws";

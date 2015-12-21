@@ -2,6 +2,7 @@ package com.geofertas.ws;
 
 import com.geofertas.entity.Advertisement;
 import com.geofertas.entity.User;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.jws.WebService;
 import javax.ws.rs.*;
@@ -26,12 +27,17 @@ public interface GeofertasService {
     @Path("/getAdvertisements/{lat}-{lon}")
     @Produces("application/json")
     List<Advertisement> getAdvertisements(@PathParam("lat") Double lat, @PathParam("lon") Double lon);
+
     Boolean saveAdvertisement(Integer advertisementID, Integer userId);
 
     List<Advertisement> getSavedAdvertisements(Integer userID);
     User updateUser(User user);
 
+    @POST
+    @Path("/registerUser/{username}-{lastname}-{firstname}-{email}-{password}-{authenticationType}")
+    @Produces("application/json")
     User registerUser(String username, String lastname, String firstname, String email, String password, String authenticationType);
+
     Boolean resetPasword(Integer userID);
 
 

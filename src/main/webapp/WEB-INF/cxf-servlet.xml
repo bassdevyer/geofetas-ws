@@ -12,7 +12,7 @@
 
     <jaxrs:server id="geofertasServer" address="/geofertasService">
         <jaxrs:providers>
-            <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+            <ref bean="jsonProvider"/>
         </jaxrs:providers>
         <jaxrs:serviceBeans>
             <ref bean="geofertasService"/>
@@ -27,7 +27,6 @@
     <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="hibernateProperties">
@@ -88,9 +87,7 @@
     </bean>
 
     <!-- Provider beans -->
-    <bean id="jaxbProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider"/>
     <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
-
 
     <tx:annotation-driven transaction-manager="txManager"/>
 

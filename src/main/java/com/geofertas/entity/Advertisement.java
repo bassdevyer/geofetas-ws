@@ -4,11 +4,13 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Date;
 
 /**
  * Created by whoami on 12/20/15.
  */
+@XmlRootElement(name="Advertisement")
 @Entity
 public class Advertisement {
     private Long id;
