@@ -1,23 +1,22 @@
 package com.geofertas.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
- * Created by whoami on 12/20/15.
+ * Created by whoami on 12/21/15.
  */
 @Entity
 public class Parameter {
     private Long id;
-    private Long userId;
     private String name;
     private String value;
     private String enabled;
+    private User user;
+    private List<UserParameter> userParameter;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -27,17 +26,7 @@ public class Parameter {
     }
 
     @Basic
-    @Column(name = "user_id")
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 255)
     public String getName() {
         return name;
     }
@@ -47,7 +36,7 @@ public class Parameter {
     }
 
     @Basic
-    @Column(name = "value")
+    @Column(name = "value", nullable = false, length = 255)
     public String getValue() {
         return value;
     }
@@ -57,7 +46,7 @@ public class Parameter {
     }
 
     @Basic
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
     }
@@ -74,7 +63,6 @@ public class Parameter {
         Parameter parameter = (Parameter) o;
 
         if (id != null ? !id.equals(parameter.id) : parameter.id != null) return false;
-        if (userId != null ? !userId.equals(parameter.userId) : parameter.userId != null) return false;
         if (name != null ? !name.equals(parameter.name) : parameter.name != null) return false;
         if (value != null ? !value.equals(parameter.value) : parameter.value != null) return false;
         if (enabled != null ? !enabled.equals(parameter.enabled) : parameter.enabled != null) return false;
@@ -85,10 +73,27 @@ public class Parameter {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (value != null ? value.hashCode() : 0);
         result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @OneToMany(mappedBy = "parameter")
+    public List<UserParameter> getUserParameter() {
+        return userParameter;
+    }
+
+    public void setUserParameter(List<UserParameter> userParameter) {
+        this.userParameter = userParameter;
     }
 }

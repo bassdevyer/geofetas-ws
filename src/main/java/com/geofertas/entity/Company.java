@@ -1,12 +1,10 @@
 package com.geofertas.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
- * Created by whoami on 12/20/15.
+ * Created by whoami on 12/21/15.
  */
 @Entity
 public class Company {
@@ -15,9 +13,11 @@ public class Company {
     private String description;
     private String logo;
     private String enabled;
+    private List<BranchOffice> branchOffice;
+    private List<UserCompany> userCompany;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -27,7 +27,7 @@ public class Company {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 255)
     public String getName() {
         return name;
     }
@@ -37,7 +37,7 @@ public class Company {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -47,7 +47,7 @@ public class Company {
     }
 
     @Basic
-    @Column(name = "logo")
+    @Column(name = "logo", nullable = true, length = -1)
     public String getLogo() {
         return logo;
     }
@@ -57,7 +57,7 @@ public class Company {
     }
 
     @Basic
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
     }
@@ -90,5 +90,23 @@ public class Company {
         result = 31 * result + (logo != null ? logo.hashCode() : 0);
         result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "company")
+    public List<BranchOffice> getBranchOffice() {
+        return branchOffice;
+    }
+
+    public void setBranchOffice(List<BranchOffice> branchOffice) {
+        this.branchOffice = branchOffice;
+    }
+
+    @OneToMany(mappedBy = "company")
+    public List<UserCompany> getUserCompany() {
+        return userCompany;
+    }
+
+    public void setUserCompany(List<UserCompany> userCompany) {
+        this.userCompany = userCompany;
     }
 }

@@ -3,7 +3,7 @@ package com.geofertas.entity;
 import javax.persistence.*;
 
 /**
- * Created by whoami on 12/20/15.
+ * Created by whoami on 12/21/15.
  */
 @Entity
 @Table(name = "advertisement_tag", schema = "public", catalog = "geofertas")
@@ -14,7 +14,7 @@ public class AdvertisementTag {
     private String enabled;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -24,7 +24,7 @@ public class AdvertisementTag {
     }
 
     @Basic
-    @Column(name = "advertisement_id")
+    @Column(name = "advertisement_id", nullable = false)
     public Long getAdvertisementId() {
         return advertisementId;
     }
@@ -34,7 +34,7 @@ public class AdvertisementTag {
     }
 
     @Basic
-    @Column(name = "tag_id")
+    @Column(name = "tag_id", nullable = false)
     public Long getTagId() {
         return tagId;
     }
@@ -44,7 +44,7 @@ public class AdvertisementTag {
     }
 
     @Basic
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
     }

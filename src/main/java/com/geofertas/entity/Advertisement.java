@@ -1,17 +1,15 @@
 package com.geofertas.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Date;
+import java.util.List;
 
 /**
- * Created by whoami on 12/20/15.
+ * Created by whoami on 12/21/15.
  */
-@XmlRootElement(name="Advertisement")
 @Entity
+@XmlRootElement(name = "Advertisement")
 public class Advertisement {
     private Long id;
     private String title;
@@ -20,9 +18,11 @@ public class Advertisement {
     private Date endDate;
     private String image;
     private String enabled;
+    private List<AdvertisementBranch> advertisementBranch;
+    private List<UserAdvertisement> userAdvertisement;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -32,7 +32,7 @@ public class Advertisement {
     }
 
     @Basic
-    @Column(name = "title")
+    @Column(name = "title", nullable = false, length = 255)
     public String getTitle() {
         return title;
     }
@@ -42,7 +42,7 @@ public class Advertisement {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = false, length = 255)
     public String getDescription() {
         return description;
     }
@@ -52,7 +52,7 @@ public class Advertisement {
     }
 
     @Basic
-    @Column(name = "start_date")
+    @Column(name = "start_date", nullable = false)
     public Date getStartDate() {
         return startDate;
     }
@@ -62,7 +62,7 @@ public class Advertisement {
     }
 
     @Basic
-    @Column(name = "end_date")
+    @Column(name = "end_date", nullable = false)
     public Date getEndDate() {
         return endDate;
     }
@@ -72,7 +72,7 @@ public class Advertisement {
     }
 
     @Basic
-    @Column(name = "image")
+    @Column(name = "image", nullable = true, length = -1)
     public String getImage() {
         return image;
     }
@@ -82,7 +82,7 @@ public class Advertisement {
     }
 
     @Basic
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
     }
@@ -119,5 +119,23 @@ public class Advertisement {
         result = 31 * result + (image != null ? image.hashCode() : 0);
         result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "advertisement")
+    public List<AdvertisementBranch> getAdvertisementBranch() {
+        return advertisementBranch;
+    }
+
+    public void setAdvertisementBranch(List<AdvertisementBranch> advertisementBranch) {
+        this.advertisementBranch = advertisementBranch;
+    }
+
+    @OneToMany(mappedBy = "advertisement")
+    public List<UserAdvertisement> getUserAdvertisement() {
+        return userAdvertisement;
+    }
+
+    public void setUserAdvertisement(List<UserAdvertisement> userAdvertisement) {
+        this.userAdvertisement = userAdvertisement;
     }
 }

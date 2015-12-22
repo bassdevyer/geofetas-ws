@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by whoami on 12/20/15.
+ * Created by whoami on 12/21/15.
  */
 @Entity
 public class Administrator {
@@ -16,7 +16,7 @@ public class Administrator {
     private String enabled;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -26,7 +26,7 @@ public class Administrator {
     }
 
     @Basic
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, length = -1)
     public String getUsername() {
         return username;
     }
@@ -36,7 +36,7 @@ public class Administrator {
     }
 
     @Basic
-    @Column(name = "password")
+    @Column(name = "password", nullable = false, length = -1)
     public String getPassword() {
         return password;
     }
@@ -46,7 +46,7 @@ public class Administrator {
     }
 
     @Basic
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
     }

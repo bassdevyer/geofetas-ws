@@ -1,24 +1,26 @@
 package com.geofertas.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
- * Created by whoami on 12/20/15.
+ * Created by whoami on 12/21/15.
  */
 @Entity
 @Table(name = "branch_office", schema = "public", catalog = "geofertas")
 public class BranchOffice {
     private Long id;
-    private Long companyId;
     private String name;
     private String address;
     private String telephone;
     private Double latitude;
     private Double longitude;
     private String enabled;
+    private List<AdvertisementBranch> advertisementBranch;
+    private Company company;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -28,17 +30,7 @@ public class BranchOffice {
     }
 
     @Basic
-    @Column(name = "company_id")
-    public Long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
-    }
-
-    @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = true, length = 255)
     public String getName() {
         return name;
     }
@@ -48,7 +40,7 @@ public class BranchOffice {
     }
 
     @Basic
-    @Column(name = "address")
+    @Column(name = "address", nullable = true, length = 255)
     public String getAddress() {
         return address;
     }
@@ -58,7 +50,7 @@ public class BranchOffice {
     }
 
     @Basic
-    @Column(name = "telephone")
+    @Column(name = "telephone", nullable = true, length = 255)
     public String getTelephone() {
         return telephone;
     }
@@ -68,7 +60,7 @@ public class BranchOffice {
     }
 
     @Basic
-    @Column(name = "latitude")
+    @Column(name = "latitude", nullable = false, precision = 0)
     public Double getLatitude() {
         return latitude;
     }
@@ -78,7 +70,7 @@ public class BranchOffice {
     }
 
     @Basic
-    @Column(name = "longitude")
+    @Column(name = "longitude", nullable = false, precision = 0)
     public Double getLongitude() {
         return longitude;
     }
@@ -88,7 +80,7 @@ public class BranchOffice {
     }
 
     @Basic
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
     }
@@ -105,7 +97,6 @@ public class BranchOffice {
         BranchOffice that = (BranchOffice) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (companyId != null ? !companyId.equals(that.companyId) : that.companyId != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (telephone != null ? !telephone.equals(that.telephone) : that.telephone != null) return false;
@@ -119,7 +110,6 @@ public class BranchOffice {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (companyId != null ? companyId.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (telephone != null ? telephone.hashCode() : 0);
@@ -127,5 +117,23 @@ public class BranchOffice {
         result = 31 * result + (longitude != null ? longitude.hashCode() : 0);
         result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "branchOffice")
+    public List<AdvertisementBranch> getAdvertisementBranch() {
+        return advertisementBranch;
+    }
+
+    public void setAdvertisementBranch(List<AdvertisementBranch> advertisementBranch) {
+        this.advertisementBranch = advertisementBranch;
+    }
+
+    @ManyToOne
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }

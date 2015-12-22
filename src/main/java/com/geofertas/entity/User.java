@@ -1,12 +1,10 @@
 package com.geofertas.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
- * Created by whoami on 12/20/15.
+ * Created by whoami on 12/21/15.
  */
 @Entity
 public class User {
@@ -18,9 +16,13 @@ public class User {
     private String password;
     private String authenticationType;
     private String enabled;
+    private List<Parameter> parameter;
+    private List<UserCompany> userCompany;
+    private List<UserParameter> userParameter;
+    private List<UserTag> userTag;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -30,7 +32,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, length = 255)
     public String getUsername() {
         return username;
     }
@@ -40,7 +42,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = true, length = 255)
     public String getLastName() {
         return lastName;
     }
@@ -50,7 +52,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = true, length = 255)
     public String getFirstName() {
         return firstName;
     }
@@ -60,7 +62,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, length = 255)
     public String getEmail() {
         return email;
     }
@@ -70,7 +72,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "password")
+    @Column(name = "password", nullable = false, length = 255)
     public String getPassword() {
         return password;
     }
@@ -80,7 +82,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "authentication_type")
+    @Column(name = "authentication_type", nullable = false, length = -1)
     public String getAuthenticationType() {
         return authenticationType;
     }
@@ -90,7 +92,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
     }
@@ -130,5 +132,41 @@ public class User {
         result = 31 * result + (authenticationType != null ? authenticationType.hashCode() : 0);
         result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "user")
+    public List<Parameter> getParameter() {
+        return parameter;
+    }
+
+    public void setParameter(List<Parameter> parameter) {
+        this.parameter = parameter;
+    }
+
+    @OneToMany(mappedBy = "user")
+    public List<UserCompany> getUserCompany() {
+        return userCompany;
+    }
+
+    public void setUserCompany(List<UserCompany> userCompany) {
+        this.userCompany = userCompany;
+    }
+
+    @OneToMany(mappedBy = "user")
+    public List<UserParameter> getUserParameter() {
+        return userParameter;
+    }
+
+    public void setUserParameter(List<UserParameter> userParameter) {
+        this.userParameter = userParameter;
+    }
+
+    @OneToMany(mappedBy = "user")
+    public List<UserTag> getUserTag() {
+        return userTag;
+    }
+
+    public void setUserTag(List<UserTag> userTag) {
+        this.userTag = userTag;
     }
 }

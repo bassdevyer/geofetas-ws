@@ -1,12 +1,10 @@
 package com.geofertas.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
- * Created by whoami on 12/20/15.
+ * Created by whoami on 12/21/15.
  */
 @Entity
 public class Catalogue {
@@ -14,9 +12,10 @@ public class Catalogue {
     private String name;
     private String description;
     private String enabled;
+    private List<CatalogueDetail> catalogueDetail;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -26,7 +25,7 @@ public class Catalogue {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = -1)
     public String getName() {
         return name;
     }
@@ -36,7 +35,7 @@ public class Catalogue {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = true, length = -1)
     public String getDescription() {
         return description;
     }
@@ -46,7 +45,7 @@ public class Catalogue {
     }
 
     @Basic
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
     }
@@ -78,5 +77,14 @@ public class Catalogue {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "catalogue")
+    public List<CatalogueDetail> getCatalogueDetail() {
+        return catalogueDetail;
+    }
+
+    public void setCatalogueDetail(List<CatalogueDetail> catalogueDetail) {
+        this.catalogueDetail = catalogueDetail;
     }
 }

@@ -1,21 +1,20 @@
 package com.geofertas.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
- * Created by whoami on 12/20/15.
+ * Created by whoami on 12/21/15.
  */
 @Entity
 public class Tag {
     private Long id;
     private Long name;
     private String enabled;
+    private List<UserTag> userTag;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -25,7 +24,7 @@ public class Tag {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     public Long getName() {
         return name;
     }
@@ -35,7 +34,7 @@ public class Tag {
     }
 
     @Basic
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
     }
@@ -64,5 +63,14 @@ public class Tag {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "tag")
+    public List<UserTag> getUserTag() {
+        return userTag;
+    }
+
+    public void setUserTag(List<UserTag> userTag) {
+        this.userTag = userTag;
     }
 }

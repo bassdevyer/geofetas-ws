@@ -3,18 +3,18 @@ package com.geofertas.entity;
 import javax.persistence.*;
 
 /**
- * Created by whoami on 12/20/15.
+ * Created by whoami on 12/21/15.
  */
 @Entity
 @Table(name = "user_tag", schema = "public", catalog = "geofertas")
 public class UserTag {
     private Long id;
-    private Long userId;
-    private Long tagId;
     private String enabled;
+    private Tag tag;
+    private User user;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -24,27 +24,7 @@ public class UserTag {
     }
 
     @Basic
-    @Column(name = "user_id")
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    @Basic
-    @Column(name = "tag_id")
-    public Long getTagId() {
-        return tagId;
-    }
-
-    public void setTagId(Long tagId) {
-        this.tagId = tagId;
-    }
-
-    @Basic
-    @Column(name = "enabled")
+    @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
     }
@@ -61,8 +41,6 @@ public class UserTag {
         UserTag userTag = (UserTag) o;
 
         if (id != null ? !id.equals(userTag.id) : userTag.id != null) return false;
-        if (userId != null ? !userId.equals(userTag.userId) : userTag.userId != null) return false;
-        if (tagId != null ? !tagId.equals(userTag.tagId) : userTag.tagId != null) return false;
         if (enabled != null ? !enabled.equals(userTag.enabled) : userTag.enabled != null) return false;
 
         return true;
@@ -71,9 +49,25 @@ public class UserTag {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (tagId != null ? tagId.hashCode() : 0);
         result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    public Tag getTag() {
+        return tag;
+    }
+
+    public void setTag(Tag tag) {
+        this.tag = tag;
+    }
+
+    @ManyToOne
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
