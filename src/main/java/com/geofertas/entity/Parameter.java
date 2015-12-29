@@ -12,7 +12,6 @@ public class Parameter {
     private String name;
     private String value;
     private String enabled;
-    private User user;
     private List<UserParameter> userParameter;
 
     @Id
@@ -77,15 +76,6 @@ public class Parameter {
         result = 31 * result + (value != null ? value.hashCode() : 0);
         result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     @OneToMany(mappedBy = "parameter")

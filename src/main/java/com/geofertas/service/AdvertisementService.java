@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface AdvertisementService {
 
-    List<Advertisement> getAdvertisements(Double lat, Double lon);
+    List<Advertisement> getAdvertisements(Double lat, Double lon, Double radius);
 }

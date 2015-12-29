@@ -17,8 +17,8 @@ public class AdvertisementServiceImpl implements AdvertisementService{
         this.advertisementDAO = advertisementDAO;
     }
 
-    public List<Advertisement> getAdvertisements(Double lat, Double lon) {
+    public List<Advertisement> getAdvertisements(Double lat, Double lon, Double radius) {
         // TODO aplicar reglas de negocio para busqueda de ofertas
-        return advertisementDAO.getAdvertisements(lat, lon);
+        return advertisementDAO.getAdvertisements(lat, lon, radius);
     }
 }

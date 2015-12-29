@@ -9,4 +9,6 @@ import org.springframework.dao.DataAccessException;
 public interface UserService {
     void registerUser(User user) throws DataAccessException;
 
+    User authenticate(String username, String password);
+
 }

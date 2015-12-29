@@ -11,5 +11,5 @@ import java.util.List;
 public interface AdvertisementDAO {
 
     @Transactional
-    List<Advertisement> getAdvertisements(Double lat, Double lon);
+    List<Advertisement> getAdvertisements(Double lat, Double lon, Double radius);
 }

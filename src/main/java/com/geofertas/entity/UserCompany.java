@@ -54,6 +54,7 @@ public class UserCompany {
     }
 
     @ManyToOne
+    @JoinColumn(name = "company_id")
     public Company getCompany() {
         return company;
     }
@@ -63,6 +64,7 @@ public class UserCompany {
     }
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
     }

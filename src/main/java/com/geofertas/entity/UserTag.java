@@ -54,6 +54,7 @@ public class UserTag {
     }
 
     @ManyToOne
+    @JoinColumn(name = "tag_id")
     public Tag getTag() {
         return tag;
     }
@@ -63,6 +64,7 @@ public class UserTag {
     }
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
     }

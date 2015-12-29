@@ -19,5 +19,8 @@ public class UserServiceImpl implements UserService {
         userDAO.registerUser(user);
     }
 
-
+    public User authenticate(String username, String password) {
+        Object outcome = userDAO.authenticate(username, password);
+        return (outcome != null) ? (User) outcome : null;
+    }
 }

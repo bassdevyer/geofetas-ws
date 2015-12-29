@@ -21,12 +21,15 @@ public interface GeofertasService {
     @Consumes("application/json")
     String test();
 
-    User authenticate(String username, String hashPassword);
+    @GET
+    @Path("/authenticate/{username}-{password}")
+    @Produces("application/json")
+    User authenticate(@PathParam("username") String username, @PathParam("password") String hashPassword);
 
     @GET
-    @Path("/getAdvertisements/{lat}-{lon}")
+    @Path("/getAdvertisements/{lat}-{lon}-{rad}")
     @Produces("application/json")
-    List<Advertisement> getAdvertisements(@PathParam("lat") Double lat, @PathParam("lon") Double lon);
+    List<Advertisement> getAdvertisements(@PathParam("lat") Double lat, @PathParam("lon") Double lon, @PathParam("rad") Double radius);
 
     Boolean saveAdvertisement(Integer advertisementID, Integer userId);
 

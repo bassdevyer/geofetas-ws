@@ -1,12 +1,18 @@
 package com.geofertas.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 /**
  * Created by whoami on 12/21/15.
  */
 @Entity
+@Table(name = "user", schema = "public", catalog = "geofertas")
+//@XmlRootElement(name = "User")
 public class User {
     private Long id;
     private String username;
@@ -16,12 +22,13 @@ public class User {
     private String password;
     private String authenticationType;
     private String enabled;
-    private List<Parameter> parameter;
     private List<UserCompany> userCompany;
     private List<UserParameter> userParameter;
     private List<UserTag> userTag;
+    private List<UserAdvertisement> userAdvertisement;
 
     @Id
+    //@GeneratedValue
     @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
@@ -31,7 +38,6 @@ public class User {
         this.id = id;
     }
 
-    @Basic
     @Column(name = "username", nullable = false, length = 255)
     public String getUsername() {
         return username;
@@ -41,7 +47,6 @@ public class User {
         this.username = username;
     }
 
-    @Basic
     @Column(name = "last_name", nullable = true, length = 255)
     public String getLastName() {
         return lastName;
@@ -51,7 +56,6 @@ public class User {
         this.lastName = lastName;
     }
 
-    @Basic
     @Column(name = "first_name", nullable = true, length = 255)
     public String getFirstName() {
         return firstName;
@@ -61,7 +65,6 @@ public class User {
         this.firstName = firstName;
     }
 
-    @Basic
     @Column(name = "email", nullable = false, length = 255)
     public String getEmail() {
         return email;
@@ -71,7 +74,6 @@ public class User {
         this.email = email;
     }
 
-    @Basic
     @Column(name = "password", nullable = false, length = 255)
     public String getPassword() {
         return password;
@@ -81,8 +83,7 @@ public class User {
         this.password = password;
     }
 
-    @Basic
-    @Column(name = "authentication_type", nullable = false, length = -1)
+    @Column(name = "authentication_type", nullable = false, length = 1)
     public String getAuthenticationType() {
         return authenticationType;
     }
@@ -91,8 +92,7 @@ public class User {
         this.authenticationType = authenticationType;
     }
 
-    @Basic
-    @Column(name = "enabled", nullable = false, length = -1)
+    @Column(name = "enabled", nullable = false, length = 1)
     public String getEnabled() {
         return enabled;
     }
@@ -101,49 +101,10 @@ public class User {
         this.enabled = enabled;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
-
-        if (id != null ? !id.equals(user.id) : user.id != null) return false;
-        if (username != null ? !username.equals(user.username) : user.username != null) return false;
-        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
-        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (authenticationType != null ? !authenticationType.equals(user.authenticationType) : user.authenticationType != null)
-            return false;
-        if (enabled != null ? !enabled.equals(user.enabled) : user.enabled != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (authenticationType != null ? authenticationType.hashCode() : 0);
-        result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "user")
-    public List<Parameter> getParameter() {
-        return parameter;
-    }
-
-    public void setParameter(List<Parameter> parameter) {
-        this.parameter = parameter;
-    }
-
-    @OneToMany(mappedBy = "user")
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<UserCompany> getUserCompany() {
         return userCompany;
     }
@@ -152,7 +113,9 @@ public class User {
         this.userCompany = userCompany;
     }
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<UserParameter> getUserParameter() {
         return userParameter;
     }
@@ -161,12 +124,25 @@ public class User {
         this.userParameter = userParameter;
     }
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<UserTag> getUserTag() {
         return userTag;
     }
 
     public void setUserTag(List<UserTag> userTag) {
         this.userTag = userTag;
+    }
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    public List<UserAdvertisement> getUserAdvertisement() {
+        return userAdvertisement;
+    }
+
+    public void setUserAdvertisement(List<UserAdvertisement> userAdvertisement) {
+        this.userAdvertisement = userAdvertisement;
     }
 }

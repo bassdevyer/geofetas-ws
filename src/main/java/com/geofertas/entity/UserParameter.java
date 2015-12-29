@@ -54,6 +54,7 @@ public class UserParameter {
     }
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     public User getUser() {
         return user;
     }
@@ -63,6 +64,7 @@ public class UserParameter {
     }
 
     @ManyToOne
+    @JoinColumn(name = "parameter_id")
     public Parameter getParameter() {
         return parameter;
     }

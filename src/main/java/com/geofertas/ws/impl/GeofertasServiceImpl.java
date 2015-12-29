@@ -35,11 +35,11 @@ public class GeofertasServiceImpl implements GeofertasService {
     }
 
     public User authenticate(String username, String hashPassword) {
-        return null;
+        return userService.authenticate(username, hashPassword);
     }
 
-    public List<Advertisement> getAdvertisements(Double lat, Double lon) {
-        return advertisementService.getAdvertisements(lat, lon);
+    public List<Advertisement> getAdvertisements(Double lat, Double lon, Double radius) {
+        return advertisementService.getAdvertisements(lat, lon, radius);
     }
 
     public Boolean saveAdvertisement(Integer advertisementID, Integer userId) {

@@ -26,7 +26,7 @@ public class Advertisement {
     private List<UserAdvertisement> userAdvertisement;
 
     @Id
-    @GeneratedValue
+    //@GeneratedValue
     @Column(name = "id", nullable = false)
     public Long getId() {
         return id;

@@ -11,6 +11,7 @@ public class UserAdvertisement {
     private Long id;
     private String enabled;
     private Advertisement advertisement;
+    private User user;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -31,6 +32,7 @@ public class UserAdvertisement {
     public void setEnabled(String enabled) {
         this.enabled = enabled;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -53,11 +55,22 @@ public class UserAdvertisement {
     }
 
     @ManyToOne
+    @JoinColumn(name = "advertisement_id")
     public Advertisement getAdvertisement() {
         return advertisement;
     }
 
     public void setAdvertisement(Advertisement advertisement) {
         this.advertisement = advertisement;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
