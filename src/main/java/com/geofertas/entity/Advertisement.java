@@ -1,5 +1,8 @@
 package com.geofertas.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Date;
@@ -9,6 +12,7 @@ import java.util.List;
  * Created by whoami on 12/21/15.
  */
 @Entity
+@Table(name = "advertisement")
 @XmlRootElement(name = "Advertisement")
 public class Advertisement {
     private Long id;
@@ -22,6 +26,7 @@ public class Advertisement {
     private List<UserAdvertisement> userAdvertisement;
 
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
@@ -31,7 +36,6 @@ public class Advertisement {
         this.id = id;
     }
 
-    @Basic
     @Column(name = "title", nullable = false, length = 255)
     public String getTitle() {
         return title;
@@ -41,7 +45,6 @@ public class Advertisement {
         this.title = title;
     }
 
-    @Basic
     @Column(name = "description", nullable = false, length = 255)
     public String getDescription() {
         return description;
@@ -51,7 +54,6 @@ public class Advertisement {
         this.description = description;
     }
 
-    @Basic
     @Column(name = "start_date", nullable = false)
     public Date getStartDate() {
         return startDate;
@@ -61,7 +63,6 @@ public class Advertisement {
         this.startDate = startDate;
     }
 
-    @Basic
     @Column(name = "end_date", nullable = false)
     public Date getEndDate() {
         return endDate;
@@ -71,7 +72,6 @@ public class Advertisement {
         this.endDate = endDate;
     }
 
-    @Basic
     @Column(name = "image", nullable = true, length = -1)
     public String getImage() {
         return image;
@@ -81,7 +81,6 @@ public class Advertisement {
         this.image = image;
     }
 
-    @Basic
     @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
@@ -121,7 +120,9 @@ public class Advertisement {
         return result;
     }
 
-    @OneToMany(mappedBy = "advertisement")
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "id_advertisement")
     public List<AdvertisementBranch> getAdvertisementBranch() {
         return advertisementBranch;
     }
@@ -130,7 +131,9 @@ public class Advertisement {
         this.advertisementBranch = advertisementBranch;
     }
 
-    @OneToMany(mappedBy = "advertisement")
+    @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "advertisement_id")
     public List<UserAdvertisement> getUserAdvertisement() {
         return userAdvertisement;
     }
