@@ -21,6 +21,8 @@ public class User {
     private String email;
     private String password;
     private String authenticationType;
+    private String picturePath;
+    private byte[] picture;
     private String enabled;
     private List<UserCompany> userCompany;
     private List<UserParameter> userParameter;
@@ -101,6 +103,24 @@ public class User {
         this.enabled = enabled;
     }
 
+
+    @Column(name = "picture", nullable = true, length = 250)
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
+    }
+
+    @Column(insertable=false, updatable=false)
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }
 
     @OneToMany
     @JoinColumn(name = "user_id")

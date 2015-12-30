@@ -2,7 +2,6 @@ package com.geofertas.dao.impl;
 
 import com.geofertas.dao.AdvertisementDAO;
 import com.geofertas.entity.Advertisement;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
