@@ -13,4 +13,6 @@ public interface UserService {
 
     User authenticate(String username, String password);
 
+    User updateUser(User user);
+
 }

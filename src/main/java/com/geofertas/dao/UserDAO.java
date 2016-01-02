@@ -15,4 +15,9 @@ public interface UserDAO {
     @Transactional
     Object authenticate(String username, String password);
 
+    @Transactional
+    Object updateUser(User user);
+
+    @Transactional
+    Object getUserByUsername(String username);
 }

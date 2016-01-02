@@ -29,13 +29,18 @@ public interface GeofertasService {
     Boolean saveAdvertisement(Integer advertisementID, Integer userId);
 
     List<Advertisement> getSavedAdvertisements(Integer userID);
-    User updateUser(User user);
 
     @POST
     @Path("/registerUser/")
     @Produces("application/json")
     @Consumes("application/json")
     User registerUser(User user);
+
+    @POST
+    @Path("/updateUser/")
+    @Produces("application/json")
+    @Consumes("application/json")
+    User updateUser(User user);
 
     Boolean resetPasword(Integer userID);
 

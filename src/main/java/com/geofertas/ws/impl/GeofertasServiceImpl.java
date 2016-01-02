@@ -51,7 +51,7 @@ public class GeofertasServiceImpl implements GeofertasService {
     }
 
     public User updateUser(User user) {
-        return null;
+        return userService.updateUser(user);
     }
 
     public User registerUser(User user) {

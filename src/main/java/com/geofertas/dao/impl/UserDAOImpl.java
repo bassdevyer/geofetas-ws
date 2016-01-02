@@ -36,4 +36,20 @@ public class UserDAOImpl  implements UserDAO {
         query.setParameter("password", password);
         return query.uniqueResult();
     }
+
+    @Override
+    public Object updateUser(User user) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.merge(user);
+    }
+
+    @Override
+    public Object getUserByUsername(String username){
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where username = :username and enabled = 'A'");
+        query.setMaxResults(1);
+        query.setParameter("username", username);
+        return query.uniqueResult();
+    }
+
 }

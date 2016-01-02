@@ -29,11 +29,11 @@ public class UserServiceImpl implements UserService {
         String filePath = System.getProperty("geofertas.images.dir").toString().concat(filename.toString());
         File newFile = new File(filePath);
         FileUtils.writeByteArrayToFile(newFile, user.getPicture());
-        user.setPicturePath(filePath);
+        user.setPicturePath(filename.toString());
         Object outcome = userDAO.registerUser(user);
         if(outcome != null){
             User outcomeUser = (User) outcome;
-            File file = new File(outcomeUser.getPicturePath());
+            File file = new File(filePath);
             outcomeUser.setPicture(FileUtils.readFileToByteArray(file));
             return user;
         }
@@ -52,5 +52,28 @@ public class UserServiceImpl implements UserService {
             }
         }
         return (outcome != null) ? (User) outcome : null;
+    }
+
+    @Override
+    public User updateUser(User user) {
+        Object toUpdate = userDAO.getUserByUsername(user.getUsername());
+        if(toUpdate != null){
+            User userToUpdate = (User) toUpdate;
+            if(!userToUpdate.getPassword().equals(user.getPassword()))
+                userToUpdate.setPassword(user.getPassword());
+            if(!userToUpdate.getLastName().equals(user.getLastName()))
+                userToUpdate.setLastName(user.getLastName());
+            if(!userToUpdate.getPicture().equals(user.getPicture()))
+                userToUpdate.setPicture(user.getPicture());
+            if(!userToUpdate.getFirstName().equals(user.getFirstName()))
+                userToUpdate.setFirstName(user.getFirstName());
+            if(!userToUpdate.getEmail().equals(user.getEmail()))
+                userToUpdate.setEmail(user.getEmail());
+            Object outcome = userDAO.updateUser(userToUpdate);
+            if(outcome != null){
+                return (User) outcome;
+            }
+        }
+        return null;
     }
 }
