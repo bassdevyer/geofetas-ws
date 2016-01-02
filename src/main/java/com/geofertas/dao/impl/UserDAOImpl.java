@@ -19,9 +19,13 @@ public class UserDAOImpl  implements UserDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    public void registerUser(User user) throws DataAccessException {
+    public Object registerUser(User user) throws DataAccessException {
         Session session = sessionFactory.getCurrentSession();
-        session.save(user);
+        Long newId = (Long) session.save(user);
+        if(newId != 0L){
+            return session.get(User.class, newId);
+        }
+        return null;
     }
 
     public Object authenticate(String username, String password) {

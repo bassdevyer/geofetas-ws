@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UserDAO {
 
     @Transactional
-    void registerUser(User user) throws DataAccessException;
+    Object registerUser(User user) throws DataAccessException;
 
     @Transactional
     Object authenticate(String username, String password);

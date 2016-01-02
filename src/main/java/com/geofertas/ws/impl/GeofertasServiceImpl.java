@@ -5,12 +5,17 @@ import com.geofertas.entity.User;
 import com.geofertas.service.AdvertisementService;
 import com.geofertas.service.UserService;
 import com.geofertas.ws.GeofertasService;
+import org.apache.commons.codec.binary.Base64;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.dao.DataAccessException;
 
+import org.codehaus.jackson.type.TypeReference;
+
 import javax.jws.WebService;
-import javax.ws.rs.Produces;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by whoami on 12/12/15.
@@ -20,11 +25,6 @@ public class GeofertasServiceImpl implements GeofertasService {
 
     private UserService userService;
     private AdvertisementService advertisementService;
-
-
-    public String test(){
-        return "testing ws";
-    }
 
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -54,18 +54,11 @@ public class GeofertasServiceImpl implements GeofertasService {
         return null;
     }
 
-    public User registerUser(String username, String lastname, String firstname, String email, String password, String authenticationType) {
-        User user = new User();
-        user.setUsername(username);
-        user.setLastName(lastname);
-        user.setFirstName(firstname);
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setAuthenticationType(authenticationType);
+    public User registerUser(User user) {
+
         try {
-            userService.registerUser(user);
-            return user;
-        }catch(DataAccessException ex){
+            return userService.registerUser(user);
+        }catch(DataAccessException | IOException ex){
             ex.printStackTrace();
             return null;
         }

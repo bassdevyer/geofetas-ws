@@ -17,11 +17,6 @@ import java.util.List;
 public interface GeofertasService {
 
     @GET
-    @Path("/test")
-    @Consumes("application/json")
-    String test();
-
-    @GET
     @Path("/authenticate/{username}/{password}")
     @Produces("application/json")
     User authenticate(@PathParam("username") String username, @PathParam("password") String hashPassword);
@@ -37,9 +32,10 @@ public interface GeofertasService {
     User updateUser(User user);
 
     @POST
-    @Path("/registerUser/{username}-{lastname}-{firstname}-{email}-{password}-{authenticationType}")
+    @Path("/registerUser/")
     @Produces("application/json")
-    User registerUser(String username, String lastname, String firstname, String email, String password, String authenticationType);
+    @Consumes("application/json")
+    User registerUser(User user);
 
     Boolean resetPasword(Integer userID);
 

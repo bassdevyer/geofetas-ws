@@ -30,7 +30,8 @@ public class User {
     private List<UserAdvertisement> userAdvertisement;
 
     @Id
-    //@GeneratedValue
+    @SequenceGenerator(name = "seq_user", sequenceName = "seq_user")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "seq_user")
     @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
