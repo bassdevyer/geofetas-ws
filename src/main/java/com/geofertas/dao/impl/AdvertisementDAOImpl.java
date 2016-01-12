@@ -30,11 +30,12 @@ public class AdvertisementDAOImpl implements AdvertisementDAO {
 
         //Query query = session.createQuery("select adv from Advertisement  adv join adv.advertisementBranch adb join adb.branchOffice bro");
         //Query query = session.createQuery("from Advertisement  adv");
-        Query query = session.createQuery("select adv from Advertisement adv join adv.advertisementBranch adb join adb.branchOffice bo " +
+        /*Query query = session.createQuery("select adv from Advertisement adv join adv.advertisementBranch adb join adb.branchOffice bo " +
                         "where acos(sin(:lat) * sin(bo.latitude) + cos(:lat) * cos(bo.latitude) * cos(bo.longitude - (:lon))) * 6371000 <= :radius");
         query.setParameter("lat", lat);
-         query.setParameter("lon", lon);
-        query.setParameter("radius", radius);
+         query.setParameter("lon", lon);*/
+        Query query = session.createQuery("from Advertisement ");
+        //query.setParameter("radius", radius);
         //return criteria.list();
         return query.list();
     }
