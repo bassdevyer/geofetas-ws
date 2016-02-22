@@ -1,5 +1,7 @@
 package com.geofertas.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "advertisement")
 @XmlRootElement(name = "Advertisement")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Advertisement {
     private Long id;
     private String title;

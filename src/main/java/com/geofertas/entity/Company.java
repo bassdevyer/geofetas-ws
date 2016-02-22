@@ -1,5 +1,9 @@
 package com.geofertas.entity;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -93,6 +97,8 @@ public class Company {
     }
 
     @OneToMany(mappedBy = "company")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
     public List<BranchOffice> getBranchOffice() {
         return branchOffice;
     }
@@ -102,6 +108,8 @@ public class Company {
     }
 
     @OneToMany(mappedBy = "company")
+    @JsonIgnore
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<UserCompany> getUserCompany() {
         return userCompany;
     }

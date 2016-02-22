@@ -1,5 +1,8 @@
 package com.geofertas.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -13,6 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "branch_office", schema = "public", catalog = "geofertas")
 @XmlRootElement(name = "BranchOffice")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class BranchOffice {
     private Long id;
     private String name;
@@ -125,7 +129,7 @@ public class BranchOffice {
     }
 
     @OneToMany(mappedBy = "branchOffice")
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
     public List<AdvertisementBranch> getAdvertisementBranch() {
         return advertisementBranch;
     }

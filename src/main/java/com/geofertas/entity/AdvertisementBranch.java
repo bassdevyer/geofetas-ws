@@ -1,5 +1,7 @@
 package com.geofertas.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.LazyCollection;
@@ -12,6 +14,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "advertisement_branch", schema = "public", catalog = "geofertas")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class AdvertisementBranch {
     private Long id;
     private String enabled;
