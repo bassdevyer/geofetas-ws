@@ -1,21 +1,17 @@
 package com.geofertas.ws.impl;
 
 import com.geofertas.entity.Advertisement;
+import com.geofertas.entity.BranchOffice;
 import com.geofertas.entity.User;
 import com.geofertas.service.AdvertisementService;
+import com.geofertas.service.BranchOfficeService;
 import com.geofertas.service.UserService;
 import com.geofertas.ws.GeofertasService;
-import org.apache.commons.codec.binary.Base64;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.dao.DataAccessException;
-
-import org.codehaus.jackson.type.TypeReference;
 
 import javax.jws.WebService;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by whoami on 12/12/15.
@@ -25,6 +21,7 @@ public class GeofertasServiceImpl implements GeofertasService {
 
     private UserService userService;
     private AdvertisementService advertisementService;
+    private BranchOfficeService branchOfficeService;
 
     public void setUserService(UserService userService) {
         this.userService = userService;
@@ -32,6 +29,10 @@ public class GeofertasServiceImpl implements GeofertasService {
 
     public void setAdvertisementService(AdvertisementService advertisementService) {
         this.advertisementService = advertisementService;
+    }
+
+    public void setBranchOfficeService(BranchOfficeService branchOfficeService){
+        this.branchOfficeService = branchOfficeService;
     }
 
     public User authenticate(String username, String hashPassword) {
@@ -66,5 +67,10 @@ public class GeofertasServiceImpl implements GeofertasService {
 
     public Boolean resetPasword(Integer userID) {
         return null;
+    }
+
+    @Override
+    public List<BranchOffice> getBranchOffices(Double lat, Double lon, Double radius) {
+        return branchOfficeService.getBranchOffices(lat, lon, radius);
     }
 }

@@ -43,10 +43,15 @@ public class UserServiceImpl implements UserService {
     public User authenticate(String username, String password) {
         Object outcome = userDAO.authenticate(username, password);
         if(outcome != null){
-            User user = (User) outcome;
-            File file = new File(System.getProperty("geofertas.images.dir").toString().concat(File.separator).concat(user.getPicturePath()));
             try {
-                user.setPicture(FileUtils.readFileToByteArray(file));
+                User user = (User) outcome;
+                if(System.getProperty("geofertas.images.dir") == null){
+                    log.warn("Geofertas Images Directory not defined");
+                }
+                else{
+                    File file = new File(System.getProperty("geofertas.images.dir").toString().concat(File.separator).concat(user.getPicturePath()));
+                    user.setPicture(FileUtils.readFileToByteArray(file));
+                }
             }catch(IOException e){
                 log.error(e);
             }

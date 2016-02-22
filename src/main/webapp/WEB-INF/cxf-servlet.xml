@@ -69,6 +69,7 @@
     <bean id="geofertasService" class="com.geofertas.ws.impl.GeofertasServiceImpl">
         <property name="userService" ref="userService"/>
         <property name="advertisementService" ref="advertisementService"/>
+        <property name="branchOfficeService" ref="branchOfficeService"/>
     </bean>
 
     <!-- DAO Beans Definition-->
@@ -78,6 +79,9 @@
     <bean id="advertisementDAO" class="com.geofertas.dao.impl.AdvertisementDAOImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+    <bean id="branchOfficeDao" class="com.geofertas.dao.impl.BranchOfficeDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
     <!-- Service Beans Definition -->
     <bean id="userService" class="com.geofertas.service.impl.UserServiceImpl">
@@ -85,6 +89,9 @@
     </bean>
     <bean id="advertisementService" class="com.geofertas.service.impl.AdvertisementServiceImpl">
         <property name="advertisementDAO" ref="advertisementDAO"/>
+    </bean>
+    <bean id="branchOfficeService" class="com.geofertas.service.impl.BranchOfficeServiceImpl">
+        <property name="branchOfficeDao" ref="branchOfficeDao"/>
     </bean>
 
     <!-- Provider beans -->

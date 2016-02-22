@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="PostgreSQL - geofertas@localhost" uuid="e95545e2-0443-406b-bbba-45352906b65a">
+    <data-source name="PostgreSQL - geofertas@localhost" uuid="39a0d62c-5d6e-4fc7-8f53-b14aab3de357">
       <secret-storage>master_key</secret-storage>
       <user-name>postgres</user-name>
       <schema-pattern>geofertas.public</schema-pattern>
-      <default-schemas>geofertas.pg_catalog geofertas.public</default-schemas>
+      <default-schemas>geofertas.public</default-schemas>
     </data-source>
   </component>
 </project>

@@ -1,6 +1,7 @@
 package com.geofertas.ws;
 
 import com.geofertas.entity.Advertisement;
+import com.geofertas.entity.BranchOffice;
 import com.geofertas.entity.User;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -25,6 +26,11 @@ public interface GeofertasService {
     @Path("/getAdvertisements/{lat}/{lon}/{rad}")
     @Produces("application/json")
     List<Advertisement> getAdvertisements(@PathParam("lat") Double lat, @PathParam("lon") Double lon, @PathParam("rad") Double radius);
+
+    @GET
+    @Path("/getBranchOffices/{lat}/{lon}/{rad}")
+    @Produces("application/json")
+    List<BranchOffice> getBranchOffices(@PathParam("lat") Double lat, @PathParam("lon") Double lon, @PathParam("rad") Double radius);
 
     Boolean saveAdvertisement(Integer advertisementID, Integer userId);
 

@@ -1,6 +1,10 @@
 package com.geofertas.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 /**
@@ -8,6 +12,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "branch_office", schema = "public", catalog = "geofertas")
+@XmlRootElement(name = "BranchOffice")
 public class BranchOffice {
     private Long id;
     private String name;
@@ -120,6 +125,7 @@ public class BranchOffice {
     }
 
     @OneToMany(mappedBy = "branchOffice")
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<AdvertisementBranch> getAdvertisementBranch() {
         return advertisementBranch;
     }
@@ -129,6 +135,7 @@ public class BranchOffice {
     }
 
     @ManyToOne
+    @JoinColumn(name = "company_id")
     public Company getCompany() {
         return company;
     }
