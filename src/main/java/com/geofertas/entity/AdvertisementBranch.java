@@ -53,6 +53,7 @@ public class AdvertisementBranch {
 
     @ManyToOne
     @JoinColumn(name = "id_branch_office")
+    @JsonIgnore
     public BranchOffice getBranchOffice() {
         return branchOffice;
     }

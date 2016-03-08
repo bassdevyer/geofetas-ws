@@ -1,12 +1,18 @@
 package com.geofertas.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created by whoami on 12/21/15.
  */
 @Entity
 @Table(name = "user_company", schema = "public", catalog = "geofertas")
+@XmlRootElement(name = "Company")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class UserCompany {
     private Long id;
     private String enabled;

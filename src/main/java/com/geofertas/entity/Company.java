@@ -1,21 +1,28 @@
 package com.geofertas.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 /**
  * Created by whoami on 12/21/15.
  */
 @Entity
+@Table(name = "company", schema = "public", catalog = "geofertas")
+@XmlRootElement(name = "Company")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Company {
     private Long id;
     private String name;
     private String description;
     private String logo;
+    private byte[] logoBytes;
     private String enabled;
     private List<BranchOffice> branchOffice;
     private List<UserCompany> userCompany;
@@ -30,7 +37,6 @@ public class Company {
         this.id = id;
     }
 
-    @Basic
     @Column(name = "name", nullable = false, length = 255)
     public String getName() {
         return name;
@@ -40,7 +46,6 @@ public class Company {
         this.name = name;
     }
 
-    @Basic
     @Column(name = "description", nullable = true, length = 255)
     public String getDescription() {
         return description;
@@ -50,7 +55,6 @@ public class Company {
         this.description = description;
     }
 
-    @Basic
     @Column(name = "logo", nullable = true, length = -1)
     public String getLogo() {
         return logo;
@@ -60,7 +64,6 @@ public class Company {
         this.logo = logo;
     }
 
-    @Basic
     @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
@@ -70,30 +73,14 @@ public class Company {
         this.enabled = enabled;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Company company = (Company) o;
-
-        if (id != null ? !id.equals(company.id) : company.id != null) return false;
-        if (name != null ? !name.equals(company.name) : company.name != null) return false;
-        if (description != null ? !description.equals(company.description) : company.description != null) return false;
-        if (logo != null ? !logo.equals(company.logo) : company.logo != null) return false;
-        if (enabled != null ? !enabled.equals(company.enabled) : company.enabled != null) return false;
-
-        return true;
+    @Transient
+    @Column(insertable=false, updatable=false)
+    public byte[] getLogoBytes() {
+        return logoBytes;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (logo != null ? logo.hashCode() : 0);
-        result = 31 * result + (enabled != null ? enabled.hashCode() : 0);
-        return result;
+    public void setLogoBytes(byte[] logoBytes) {
+        this.logoBytes = logoBytes;
     }
 
     @OneToMany(mappedBy = "company")

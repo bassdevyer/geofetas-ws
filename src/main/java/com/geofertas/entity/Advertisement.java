@@ -2,6 +2,7 @@ package com.geofertas.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -24,6 +25,7 @@ public class Advertisement {
     private Date startDate;
     private Date endDate;
     private String image;
+    private byte[] imageBytes;
     private String enabled;
     private List<AdvertisementBranch> advertisementBranch;
     private List<UserAdvertisement> userAdvertisement;
@@ -84,6 +86,16 @@ public class Advertisement {
         this.image = image;
     }
 
+    @Column(insertable = false, updatable = false)
+    @Transient
+    public byte[] getImageBytes() {
+        return imageBytes;
+    }
+
+    public void setImageBytes(byte[] imageBytes) {
+        this.imageBytes = imageBytes;
+    }
+
     @Column(name = "enabled", nullable = false, length = -1)
     public String getEnabled() {
         return enabled;
@@ -125,6 +137,7 @@ public class Advertisement {
 
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
     @JoinColumn(name = "id_advertisement")
     public List<AdvertisementBranch> getAdvertisementBranch() {
         return advertisementBranch;
@@ -137,6 +150,7 @@ public class Advertisement {
     @OneToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "advertisement_id")
+    @JsonIgnore
     public List<UserAdvertisement> getUserAdvertisement() {
         return userAdvertisement;
     }

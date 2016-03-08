@@ -129,7 +129,7 @@ public class BranchOffice {
     }
 
     @OneToMany(mappedBy = "branchOffice")
-    @JsonIgnore
+    @LazyCollection(LazyCollectionOption.FALSE)
     public List<AdvertisementBranch> getAdvertisementBranch() {
         return advertisementBranch;
     }
